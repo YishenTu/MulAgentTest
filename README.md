@@ -160,14 +160,14 @@ Analyze the project plan and generate a comprehensive task list in `tasks.md` th
 3. Identifies and clearly labels which tasks can be executed in parallel (tasks with no dependencies that can run simultaneously)
 4. Assigns clear deliverables and success criteria for each task
 
+Please ensure the task breakdown maximizes parallel execution opportunities while respecting necessary dependencies.
+
 Format the task list with:
 - Clear task IDs (T1, T2, etc.)
 - Dependency notation (e.g., "Dependencies: T1, T3" or "Dependencies: None")
 - Parallel group indicators (e.g., "Parallel Group: A")
 - File outputs expected from each task
 - Success criteria for verification
-
-Please ensure the task breakdown maximizes parallel execution opportunities while respecting necessary dependencies.
 
 Example output format:
 
