@@ -153,25 +153,47 @@ This test successfully demonstrated the viability of multi-agent orchestration f
 
 ### Prompt 1: Generate Parallelizable Task List
 ```
-I have a complete project plan for [PROJECT NAME]. Please analyze the project requirements and generate a comprehensive task list in `tasks.md` that:
+Analyze the project plan and generate a comprehensive task list in `tasks.md` that:
 
 1. Breaks down the project into discrete, implementable tasks
-2. Identifies which tasks can be executed in parallel (no dependencies)
-3. Groups tasks by their dependencies (which must be sequential)
-4. Estimates complexity/effort for each task (simple/medium/complex)
-5. Assigns clear deliverables and success criteria for each task
+2. Groups tasks by their dependencies (tasks with dependencies must be executed after their prerequisites)
+3. Identifies and clearly labels which tasks can be executed in parallel (tasks with no dependencies that can run simultaneously)
+4. Assigns clear deliverables and success criteria for each task
 
 Format the task list with:
 - Clear task IDs (T1, T2, etc.)
-- Dependency notation (e.g., "depends on: T1, T3")
-- Parallel group indicators (e.g., "parallel_group: A")
+- Dependency notation (e.g., "Dependencies: T1, T3" or "Dependencies: None")
+- Parallel group indicators (e.g., "Parallel Group: A")
 - File outputs expected from each task
-
-The project involves: [BRIEF PROJECT DESCRIPTION]
-
-Key components include: [LIST MAIN COMPONENTS]
+- Success criteria for verification
 
 Please ensure the task breakdown maximizes parallel execution opportunities while respecting necessary dependencies.
+
+Example output format:
+
+## T1: Foundation Component
+- Dependencies: None
+- Parallel Group: A
+- Deliverables: `config.js`, `setup.sql`
+- Success Criteria: Base system is initialized and ready for dependent tasks
+
+## T2: Feature Module A  
+- Dependencies: T1
+- Parallel Group: B
+- Deliverables: `moduleA.js`, `moduleA.test.js`
+- Success Criteria: Module A functionality works as specified
+
+## T3: Feature Module B
+- Dependencies: T1  
+- Parallel Group: B
+- Deliverables: `moduleB.js`, `moduleB.test.js`
+- Success Criteria: Module B functionality works as specified
+
+## T4: Integration Component
+- Dependencies: T2, T3
+- Parallel Group: C
+- Deliverables: `integration.js`, `integration.test.js`
+- Success Criteria: Modules A and B work together correctly
 ```
 
 ### Prompt 2: Execute Tasks with Sub-Agents (Concise Version)
